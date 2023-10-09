@@ -4,22 +4,22 @@ $(document).ready(function() {
     var APIKey = "da92d95564cf58a63cab7bac1045cfe9";
 
 
-var citySearched = document.querySelector('#citySearched')
-
-//grabbing the recent search
-var searchBn = document.getElementById('searchBtn');
-searchBn.addEventListener("click", recentSearch)
-
-
-function recentSearch() {
-    var inputSrch = document.getElementById('input-search');
-    var searchInput = inputSrch.value;
-    var cityName = searchInput;
-    localStorage.setItem("City Searched", JSON.stringify(cityName));
-
-console.log("recent search:", searchInput);
-
-}
+    var citySearched = document.querySelector('#citySearched');
+    var searchBtn = document.getElementById('searchBtn');
+    searchBtn.addEventListener("click", recentSearch);
+    
+    function recentSearch() {
+      var inputSrch = document.getElementById('input-search');
+      var searchInput = inputSrch.value;
+      var cityName = searchInput.trim();
+      
+      var existingSearches = localStorage.getItem('City Searched');
+      var cityData = existingSearches ? JSON.parse(existingSearches) : [];
+      
+      cityData.push(cityName);
+      
+      localStorage.setItem("City Searched", JSON.stringify(cityData));
+    }
 
 
 
