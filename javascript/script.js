@@ -1,4 +1,4 @@
-$(document).readyu(function() {
+$(document).ready(function() {
 
 
     var APIKey = "aecc33e1f3ac606321129d5660f649cb";

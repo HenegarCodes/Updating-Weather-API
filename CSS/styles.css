@@ -1,0 +1,29 @@
+h1 {
+    text-align: center;
+    background: rgb(196,192,181);
+background: linear-gradient(90deg, rgba(196,192,181,1) 0%, rgba(251,255,0,1) 100%);
+}
+
+
+
+.main-section {
+    display:flex;
+    flex-flow: row nowrap;
+    width:500px;
+    justify-content: space-between;
+}
+.main-section h2 {
+    margin:0;
+    display: block;
+}
+
+.main-section > section {
+    border: 1px solid black;
+    padding: 5px;
+}
+.main-section > section:nth-child(1) {
+    border: 1px solid red;
+}
+.container > section{
+    display: block;
+}
