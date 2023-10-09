@@ -4,24 +4,34 @@ $(document).ready(function() {
     var APIKey = "da92d95564cf58a63cab7bac1045cfe9";
 var cityName = '';
 
-//current weather fetch
-function fetchWeather(cityName, callback) {
-    var CurrentWeatherURL = "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=da92d95564cf58a63cab7bac1045cfe9"
-    $.getJSON(CurrentWeatherURL, callback);
+
+//grabbing the recent search
+var searchBn = document.getElementById('searchBtn');
+searchBn.addEventListener("click", recentSearch)
+
+
+function recentSearch() {
+    var inputSrch = document.getElementById('input-search');
+    var searchInput = inputSrch.value;
+
+    
+console.log("recent search:", searchInput);
+
 }
+
+
+
+
+
+//current weather fetch
+
 
 
 //5 day forcast fetch
 
 
 
-function currentWeather(data) {
-    var city = data.name;
-    var date = dayjs().format('MMMM D, YYYY') 
-    var weatherIcon = a.weather[0].weatherIcon
-    var weatherURL = "http://openweathermap.org/img/w/" + iconcode + ".png";
-}
-
+//recent-searches id to display form local storage and be saved to this div when searched
 
 
 
