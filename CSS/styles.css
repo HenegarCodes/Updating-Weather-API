@@ -28,9 +28,11 @@ justify-content: center;
     display: flex;
     
     margin:0;
-
 }
 
+.main-section> h2 {
+    display: block;
+}
 .main-section > section {
     border: 1px solid black;
     padding: 5px;
