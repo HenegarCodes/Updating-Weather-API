@@ -18,7 +18,7 @@
     }
     
     function makeWeatherRequest(searchQuery){
-    fetch('http://api.openweathermap.org/geo/1.0/direct?q=' +searchQuery + '&limit=1&appid='+ APIkey, {
+    fetch('http://api.openweathermap.org/geo/1.0/direct?q=' +searchQuery + '&limit=5&appid='+ APIkey, {
       method: 'GET', //GET is the default.
   credentials: 'same-origin', // include, *same-origin, omit
   redirect: 'follow', // manual, *follow, error
@@ -40,10 +40,9 @@
 //current weather fetch
 
 function getWeatherData(latitude, longitude) {
-  fetch('http://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon=' + longitude + '&limit=1&appid=' + APIkey, {
+  fetch('http://api.openweathermap.org/geo/1.0/reverse?lat=' + latitude + '&lon=' + longitude + '&limit=5&appid=' + APIkey, {
     method: 'GET', //GET is the default.
-    credentials: 'same-origin', // include, *same-origin, omit
-    redirect: 'follow', // manual, *follow, error
+
   })
   .then(function (response) {
     return response.json();
