@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
   var forecastWeather = $('#forecast');
-
+  var search = $('#input-search');
 
 
     var APIkey = "da92d95564cf58a63cab7bac1045cfe9";
@@ -56,9 +56,63 @@ for (let i = 0; i < data.list.length; i++) {
     comingDayForecast[date] = forecast;
 }
 }
+
+for (var date in comingDayForecast) {
+  var forecast = comingDayForecast[date];
+  var formatDate = dayjs(forecast.dt_txt).format('MMMM D, YYYY');
+  var iconDisplay = forecast.weather[0].icon
+  var temp = (forecast.main.temp - 273.15).toFixed(2); // Convert from Kelvin to farenheit
+  var humid = forecast.main.humidity;
+  var windSpeed = forecast.wind.speed;
+
+  var futureForecast = `  <div class="forecast-item">
+  <p>Date: ${formatDate}</p>
+  <p>Temperature: ${temp} °C</p>
+  <p>Humidity: ${humid}%</p>
+  <p>Wind Speed: ${windSpeed} m/s</p>
+  <img src="https://openweathermap.org/img/w/${iconDisplay}.png" alt="Weather Icon">
+</div>`;
+forecastWeather.append(futureForecast);
 }
 
 }
+
+
+//form/click search submission
+
+search.on('submit', function(event){
+
+  event.preventDefault();
+  var cityName = search.val().trim();
+
+  if(!cityName){
+    return;
+  }
+//cureent forecast display
+  fetchWeatherData(cityName, function(currentWeatherData){
+    currentWeatherPull(currentWeatherData);
+  })
+//5 day forecast display
+  fetch5Day(cityName, function(forecastData){
+    displayCurrentWeather(forecastData)
+  })
+
+//searched city save to loca storage and parse
+var searchHistory = JSON.parse(localStorage)
+
+})
+
+
+
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -143,7 +197,7 @@ document.getElementById('1a').textContent = today;
 
 
 
-})
 
 
 
+)
